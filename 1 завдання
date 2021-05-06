@@ -1,0 +1,52 @@
+using System;
+
+namespace KR
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = new int[] { 7, 8, 3, 6, 5, 0, 2, 6, 4, 9 };
+            
+            int max = int.MinValue;  // Знаходимо максимальне з-ня
+            foreach (int a in array)
+            {
+                if (a > max)
+                {
+                    max = a;
+                }
+            }
+            
+            int min = int.MaxValue;  // Знаходимо мінімальне з-ня
+            foreach (int a in array)
+            {
+                if (a < min)
+                {
+                    min = a;
+                }
+            }
+
+            int arraySum = 0; // Знаходимо суму елементів
+
+            for (int i = 0; i < array.Length; i++)
+                arraySum += array[i];
+
+            int sum = 0;
+
+            foreach (var item in array) // Знаходимо середнє арифметичне
+            {
+                sum += item;
+            }
+            float avg = sum / array.Length;
+
+            
+        
+
+        // Далі виводимо отримані з-ня на екран
+            Console.WriteLine("Сумма: {0}", arraySum);       
+            Console.WriteLine("Максимальне з-ня: {0}", max);
+            Console.WriteLine("Мінімальне з-ня: {0}", min);
+            Console.WriteLine("Середнє з-ня: {0}", avg);
+        }
+    }
+}
