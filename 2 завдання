@@ -1,0 +1,76 @@
+using System;
+
+namespace KR
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+          
+            int[,] mat = GetArr(10, 10);
+            int x = mat.GetUpperBound(0);
+            int y = mat.GetUpperBound(1);
+            DisplayArray(mat);
+
+            int MinValue = mat[0, 0]; // Знаходимо мінімум
+            for (int p = 0; p <= x; p++)
+            {
+                if (MinValue > mat[p, p])
+                    MinValue = mat[p, p];
+                
+            }
+            Console.WriteLine(MinValue);
+
+            int MaxValue = mat[0, 0]; // Знаходимо максимум
+            for (int p = 0; p <= y; p++)
+            {
+                if (MaxValue < mat[p, p])
+                    MaxValue = mat[p, p];
+            }
+            Console.WriteLine(MaxValue);
+
+
+
+            int tmp = 0; // міняємо місцями рядки
+            for (int i = 0; i < mat.GetLength(1); i++)
+            {
+                
+                tmp = mat[x, y];
+                mat[x, y] = mat[y, x];
+                mat[y, x] = tmp;
+            }
+           
+
+
+
+
+
+
+            static int[,] GetArr(int rows, int columns) // створюємо двовимірний масив
+            {
+                int[,] mat = new int[rows, columns];
+                Random random = new Random();
+
+                for (int x = 0; x < mat.GetLength(0); x++)
+                {
+                    for (int y = 0; y < mat.GetLength(1); y++)
+                    {
+                        mat[x, y] = random.Next(20, 60); // заповнюємо масив випадковими числами в діапазоні від 20 до 60
+                    }
+                }
+                return mat;
+            }
+            static void DisplayArray(int[,] mat) // функція виводу масива на екран
+            {
+                for (int x = 0; x < mat.GetLength(0); x++)
+                {
+                    for (int y = 0; y < mat.GetLength(1); y++)
+                    {
+                        Console.Write($"{mat[x, y]} ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+}
